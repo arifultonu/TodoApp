@@ -1,4 +1,4 @@
-package com.smefinance.todoapp.operation.controller;
+package com.smefinance.todoapp.operation.task_info.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 @RestController
 @RequestMapping("/todo")
 @Slf4j
-public class TodoController {
+public class TaskInfoController {
 
     @GetMapping("/hello")
     public Collection<String> getHelloRestApi(){
