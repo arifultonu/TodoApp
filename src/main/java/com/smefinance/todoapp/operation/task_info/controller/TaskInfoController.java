@@ -39,11 +39,13 @@ public class TaskInfoController {
         return taskInfoService.getTaskInfoById(id);
     }
 
+    //Get All Task By User Id
     @GetMapping("/getAllTaskInfoByUserId/{userId}")
-    public List<TaskInfoEntity> findAllTaskInfoByUserId(Long userId) {
+    public List<TaskInfoEntity> findAllTaskInfoByUserId(@PathVariable Long userId) {
         return taskInfoService.getTaskInfoByUserId(userId);
     }
 
+    //Update Task Info
     @PutMapping("/updateTaskInfo")
     public TaskInfoEntity updateTaskInfo(@RequestBody TaskInfoEntity taskInfoEntity) {
         return taskInfoService.updateTaskInfo(taskInfoEntity);
