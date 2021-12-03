@@ -20,12 +20,13 @@ public class TaskInfoEntity {
     @Id
     @GeneratedValue(strategy = AUTO)
     private Long id;
-    private String userTaskInfo;
-    private String userId;
+
+    private Long userId;
     private String taskId;
     private String taskDetails;
     private String dueDate;
     private String createDate;
     private String taskStatus;
     private String comments;
+    private String priorityId;
 }
