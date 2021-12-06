@@ -1,5 +1,6 @@
 package com.smefinance.todoapp.operation.task_assign.controller;
 
+import com.smefinance.todoapp.common.model.DBData;
 import com.smefinance.todoapp.operation.task_assign.entity.TaskAssignEntity;
 import com.smefinance.todoapp.operation.task_assign.service.TaskAssignService;
 import lombok.extern.slf4j.Slf4j;
@@ -7,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @RestController
 @RequestMapping("/todo")
+@CrossOrigin(origins = DBData.CROSS_ORIGIN)
 @Slf4j
 public class TaskAssignController {
 
@@ -40,8 +44,8 @@ public class TaskAssignController {
     }
 
     //Get All Task By User Id
-    @GetMapping("/getAllTaskAssignByAdminUserId/{adminUserId}")
-    public List<TaskAssignEntity> findAllTaskAssignByAdminUserId(@PathVariable int adminUserId) {
+    @GetMapping("/getAllTaskByUserId/{adminUserId}")
+    public  List<TaskAssignEntity> findAllTaskAssignByAdminUserId(@PathVariable String adminUserId) {
         return taskAssignService.getTaskAssignByAdminUserId(adminUserId);
     }
 
@@ -52,7 +56,7 @@ public class TaskAssignController {
     }
 
     //Delete Task Assign By Task ID
-    @DeleteMapping("/deleteTaskAssign/{id}")
+    @DeleteMapping("/deleteTaskById/{id}")
     public String deleteTaskAssign(@PathVariable Long id) {
         return taskAssignService.deleteTaskAssign(id);
     }

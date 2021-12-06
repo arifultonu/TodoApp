@@ -23,12 +23,12 @@ public class TaskAssignEntity {
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
-    private int adminUserId;
-    private int assignUserId;
-    private int taskId;
+    private String adminUserId;
+    private String assignUserId;
+    private String taskId;
     private String taskDetails;
     private Date assignDate;
     private Date dueDate;
-    private int priorityId;
-    private int taskStatusId;
+    private String priorityId;
+    private String taskStatusId;
 }

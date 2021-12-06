@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 @RestController
 @CrossOrigin(origins = DBData.CROSS_ORIGIN)
-@RequestMapping("/e-swift")
+@RequestMapping("/todos")
 @Slf4j
 public class CommonController {
 

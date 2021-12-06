@@ -31,7 +31,7 @@ public class TaskAssignService {
     }
 
     //Get All Task Assign
-    public List<TaskAssignEntity> getTaskAssignByAdminUserId(int adminUserId) {
+    public List<TaskAssignEntity> getTaskAssignByAdminUserId(String adminUserId) {
         return taskAssignRepo.findByAdminUserId(adminUserId);
     }
 
