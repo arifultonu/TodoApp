@@ -1,6 +1,7 @@
 package com.smefinance.todoapp.operation.task_assign.controller;
 
 import com.smefinance.todoapp.common.model.DBData;
+import com.smefinance.todoapp.common.model.MessageResponse;
 import com.smefinance.todoapp.operation.task_assign.entity.TaskAssignEntity;
 import com.smefinance.todoapp.operation.task_assign.service.TaskAssignService;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +58,7 @@ public class TaskAssignController {
 
     //Delete Task Assign By Task ID
     @DeleteMapping("/deleteTaskById/{id}")
-    public String deleteTaskAssign(@PathVariable Long id) {
+    public MessageResponse deleteTaskAssign(@PathVariable Long id) {
         return taskAssignService.deleteTaskAssign(id);
     }
 

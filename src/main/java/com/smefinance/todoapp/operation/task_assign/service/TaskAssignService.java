@@ -1,5 +1,6 @@
 package com.smefinance.todoapp.operation.task_assign.service;
 
+import com.smefinance.todoapp.common.model.MessageResponse;
 import com.smefinance.todoapp.operation.task_assign.entity.TaskAssignEntity;
 import com.smefinance.todoapp.operation.task_assign.repository.TaskAssignRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +26,24 @@ public class TaskAssignService {
         return taskAssignRepo.findAll();
     }
 
-    //Get Task Assign by Id
+    //Get Task by Id
     public TaskAssignEntity getTaskAssignById(Long id) {
         return taskAssignRepo.findById(id).orElse(null);
     }
 
-    //Get All Task Assign
+    //Get All Task
     public List<TaskAssignEntity> getTaskAssignByAdminUserId(String adminUserId) {
-        return taskAssignRepo.findByAdminUserId(adminUserId);
+        return taskAssignRepo.findByAdminUserIdOrderByPriorityIdAsc(adminUserId);
     }
 
     //Delete Task
-    public String deleteTaskAssign(Long id) {
+    public MessageResponse deleteTaskAssign(Long id) {
+        MessageResponse messageResponse = new MessageResponse();
         taskAssignRepo.deleteById(id);
-        return "Task Deleted Successfully ID: " + id;
+        messageResponse.setResponseCode("1" );
+        messageResponse.setResponseMessage("Task Deleted Successfully ID: " + id);
+        return messageResponse;
+//      return "Task Deleted Successfully ID: " + id;
     }
 
 
