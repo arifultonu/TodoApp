@@ -27,14 +27,13 @@ public class TaskAssignEntity {
 
     private String adminUserId;
     private String assignUserId;
-    private String taskId;
+    private int taskId;
     private String taskDetails;
-//    @DateTimeFormat(pattern="dd/MM/yyyy")
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date assignDate;
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date dueDate;
 
-    private String priorityId;
-    private String taskStatusId;
+    private int priorityId;
+    private int taskStatusId;
 }
