@@ -20,38 +20,59 @@ public class TaskAssignController {
     @Autowired
     private TaskAssignService taskAssignService;
 
+    //Done - param- {"":""}
+    //Save a Task
     @PostMapping("/addTaskAssign")
     public TaskAssignEntity addTaskAssign(@RequestBody TaskAssignEntity taskAssignEntity) {
         return taskAssignService.saveTaskAssign(taskAssignEntity);
     }
 
+    //Done - param- [{"":""},{"":""}]
+    //Save All Task As an array - multiple rows
     @PostMapping("/addAllTaskAssign")
     public List<TaskAssignEntity> addAllTaskAssign(@RequestBody List<TaskAssignEntity> taskAssignEntityes) {
         return taskAssignService.saveAllTaskAssign(taskAssignEntityes);
     }
 
+    //Done- param-
+    //get All Task //Done
     @GetMapping("/getAllTaskAssign")
     public List<TaskAssignEntity> findAllTaskAssign() {
         return taskAssignService.getTaskAssignList();
     }
 
+    // Done- param id/serial- 14
+   // get all Task by Id/Serial //Done
     @GetMapping("/getTaskAssignById/{id}")
     public TaskAssignEntity findTaskAssignById(@PathVariable Long id) {
         return taskAssignService.getTaskAssignById(id);
     }
 
-    //Get All Task By User Id
+    //Done- param-AdminUserId- 2
+    //Get All Task By admin User Id
     @GetMapping("/getAllTaskByUserId/{adminUserId}")
     public  List<TaskAssignEntity> findAllTaskAssignByAdminUserId(@PathVariable String adminUserId) {
         return taskAssignService.getTaskAssignByAdminUserId(adminUserId);
     }
 
+
+    //Done - param- [{"":""},{"":""}]
+    //update All Task As an array - multiple rows
+    @PutMapping("/updateAllTaskAssign")
+    public List<TaskAssignEntity> updateAllTaskAssign(@RequestBody List<TaskAssignEntity> taskAssignEntityes) {
+        return taskAssignService.saveAllTaskAssign(taskAssignEntityes);
+    }
+
+
+    //Done param-RequestBody- {"":""}
     //Update Task Assign
     @PutMapping("/updateTaskAssign")
-    public TaskAssignEntity updateTaskAssign(@RequestBody TaskAssignEntity taskAssignEntity) {
+    public MessageResponse updateTaskAssign(@RequestBody TaskAssignEntity taskAssignEntity) {
+        log.info("updateTaskAssign: "+taskAssignEntity);
         return taskAssignService.updateTaskAssign(taskAssignEntity);
     }
 
+    //Done - param -id/serial- 20
     //Delete Task Assign By Task ID
     @DeleteMapping("/deleteTaskById/{id}")
     public MessageResponse deleteTaskAssign(@PathVariable Long id) {

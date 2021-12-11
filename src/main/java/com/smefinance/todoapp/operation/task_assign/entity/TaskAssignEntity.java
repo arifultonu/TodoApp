@@ -33,7 +33,6 @@ public class TaskAssignEntity {
     private Date assignDate;
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date dueDate;
-
     private int priorityId;
     private int taskStatusId;
 }

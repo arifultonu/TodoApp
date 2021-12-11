@@ -18,6 +18,8 @@ public class TaskAssignService {
         return taskAssignRepo.save(taskAssignEntity);
     }
 
+
+
     public List<TaskAssignEntity> saveAllTaskAssign(List<TaskAssignEntity> taskAssignEntityList) {
         return taskAssignRepo.saveAll(taskAssignEntityList);
     }
@@ -26,15 +28,16 @@ public class TaskAssignService {
         return taskAssignRepo.findAll();
     }
 
-    //Get Task by Id
+    //Get Task by Id/Serial No
     public TaskAssignEntity getTaskAssignById(Long id) {
         return taskAssignRepo.findById(id).orElse(null);
     }
 
-    //Get All Task
+    //Get All Task by User Id
     public List<TaskAssignEntity> getTaskAssignByAdminUserId(String adminUserId) {
         return taskAssignRepo.findByAdminUserIdOrderByPriorityIdAsc(adminUserId);
     }
+
 
     //Delete Task
     public MessageResponse deleteTaskAssign(Long id) {
@@ -47,7 +50,24 @@ public class TaskAssignService {
     }
 
 
-    public TaskAssignEntity updateTaskAssign(TaskAssignEntity taskAssignEntity) {
+    public MessageResponse updateTaskAssign(TaskAssignEntity taskAssignEntity) {
+        MessageResponse messageResponse = new MessageResponse();
+        TaskAssignEntity existingTaskAssign = taskAssignRepo.findById(taskAssignEntity.getId()).orElse(null);
+        existingTaskAssign.setAssignUserId(taskAssignEntity.getAssignUserId());
+        existingTaskAssign.setAssignDate(taskAssignEntity.getAssignDate());
+        existingTaskAssign.setDueDate(taskAssignEntity.getDueDate());
+        existingTaskAssign.setPriorityId(taskAssignEntity.getPriorityId());
+        existingTaskAssign.setTaskDetails(taskAssignEntity.getTaskDetails());
+        existingTaskAssign.setTaskStatusId(taskAssignEntity.getTaskStatusId());
+        taskAssignRepo.save(existingTaskAssign);
+        messageResponse.setResponseCode("1" );
+        messageResponse.setResponseMessage("Update Task Successfully ID: " + taskAssignEntity.getId());
+        return messageResponse;
+
+
+    }
+
+    public TaskAssignEntity updateTaskAssign2(TaskAssignEntity taskAssignEntity) {
         TaskAssignEntity existingTaskAssign = taskAssignRepo.findById(taskAssignEntity.getId()).orElse(null);
         existingTaskAssign.setAssignUserId(taskAssignEntity.getAssignUserId());
         existingTaskAssign.setAssignDate(taskAssignEntity.getAssignDate());
