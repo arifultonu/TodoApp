@@ -14,10 +14,9 @@ public class TaskAssignService {
     @Autowired
     private TaskAssignRepo taskAssignRepo;
 
-    public TaskAssignEntity saveTaskAssign(TaskAssignEntity taskAssignEntity) {
+    public TaskAssignEntity saveTaskAssign2(TaskAssignEntity taskAssignEntity) {
         return taskAssignRepo.save(taskAssignEntity);
     }
-
 
 
     public List<TaskAssignEntity> saveAllTaskAssign(List<TaskAssignEntity> taskAssignEntityList) {
@@ -38,12 +37,20 @@ public class TaskAssignService {
         return taskAssignRepo.findByAdminUserIdOrderByPriorityIdAsc(adminUserId);
     }
 
+    public MessageResponse saveTaskAssign(TaskAssignEntity taskAssignEntity) {
+        MessageResponse messageResponse = new MessageResponse();
+        taskAssignRepo.save(taskAssignEntity);
+        messageResponse.setResponseCode("1");
+        messageResponse.setResponseMessage("New Row Added Successfully");
+        return messageResponse;
+    }
+
 
     //Delete Task
     public MessageResponse deleteTaskAssign(Long id) {
         MessageResponse messageResponse = new MessageResponse();
         taskAssignRepo.deleteById(id);
-        messageResponse.setResponseCode("1" );
+        messageResponse.setResponseCode("1");
         messageResponse.setResponseMessage("Task Deleted Successfully ID: " + id);
         return messageResponse;
 //      return "Task Deleted Successfully ID: " + id;
@@ -60,7 +67,7 @@ public class TaskAssignService {
         existingTaskAssign.setTaskDetails(taskAssignEntity.getTaskDetails());
         existingTaskAssign.setTaskStatusId(taskAssignEntity.getTaskStatusId());
         taskAssignRepo.save(existingTaskAssign);
-        messageResponse.setResponseCode("1" );
+        messageResponse.setResponseCode("1");
         messageResponse.setResponseMessage("Update Task Successfully ID: " + taskAssignEntity.getId());
         return messageResponse;
 
@@ -78,6 +85,6 @@ public class TaskAssignService {
         return taskAssignRepo.save(existingTaskAssign);
     }
 
-    }
+}
 
 

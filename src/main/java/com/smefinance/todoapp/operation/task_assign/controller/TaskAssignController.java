@@ -22,10 +22,20 @@ public class TaskAssignController {
 
     //Done - param- {"":""}
     //Save a Task
+    @PostMapping("/addTaskAssign2")
+    public TaskAssignEntity addTaskAssign2(@RequestBody TaskAssignEntity taskAssignEntity) {
+        return taskAssignService.saveTaskAssign2(taskAssignEntity);
+    }
+
+    //Done - param- {"":""}
+    //Save a Task
     @PostMapping("/addTaskAssign")
-    public TaskAssignEntity addTaskAssign(@RequestBody TaskAssignEntity taskAssignEntity) {
+    public MessageResponse addTaskAssign(@RequestBody TaskAssignEntity taskAssignEntity) {
+        log.info("taskAssignEntity: "+taskAssignEntity);
         return taskAssignService.saveTaskAssign(taskAssignEntity);
     }
+
+
 
     //Done - param- [{"":""},{"":""}]
     //Save All Task As an array - multiple rows
