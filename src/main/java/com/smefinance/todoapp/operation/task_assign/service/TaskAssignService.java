@@ -14,9 +14,9 @@ public class TaskAssignService {
     @Autowired
     private TaskAssignRepo taskAssignRepo;
 
-    public TaskAssignEntity saveTaskAssign2(TaskAssignEntity taskAssignEntity) {
-        return taskAssignRepo.save(taskAssignEntity);
-    }
+//    public TaskAssignEntity saveTaskAssign2(TaskAssignEntity taskAssignEntity) {
+//        return taskAssignRepo.save(taskAssignEntity);
+//    }
 
 
     public List<TaskAssignEntity> saveAllTaskAssign(List<TaskAssignEntity> taskAssignEntityList) {
