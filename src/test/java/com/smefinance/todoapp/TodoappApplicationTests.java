@@ -9,15 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +27,7 @@ class TodoappApplicationTests {
     @Autowired
     private TaskAssignRepo taskAssignRepo;
 
+    //Add New Task
     @Test
     @Order(1)
 	@Rollback(value = false)
@@ -47,10 +44,8 @@ class TodoappApplicationTests {
                 .build();
 
         taskAssignRepo.save(taskAssignEntity);
-
         Assertions.assertThat(taskAssignEntity.getId()).isGreaterThan(0);
     }
-
 
     @Test
     @Order(2)
@@ -66,43 +61,71 @@ class TodoappApplicationTests {
         Assertions.assertThat(taskAssignEntity.size()).isGreaterThan(0);
     }
 
-
     @Test
     @Order(4)
 	@Rollback(value = false)
     public void updateTask() {
-        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(15L).get();
-
+        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(36L).get();
         taskAssignEntity.setTaskStatusId("3");
         TaskAssignEntity taskAssignEntityUpdated = taskAssignRepo.save(taskAssignEntity);
-
         Assertions.assertThat(taskAssignEntityUpdated.getTaskStatusId()).isEqualTo("3");
     }
 
 
+//    @Test
+//	@Order(5)
+//	@Rollback(value = false)
+//    public void deleteTaskById() {
+//        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(17L).get();
+//        taskAssignRepo.delete(taskAssignEntity);
+//        TaskAssignEntity taskAssignEntity1 = null;
+//        Optional<TaskAssignEntity> optionalTaskAssignEntity = taskAssignRepo.findById(17L);
+//        if (optionalTaskAssignEntity.isPresent()) {
+//            taskAssignEntity1 = optionalTaskAssignEntity.get();
+//        }
+//        Assertions.assertThat(taskAssignEntity1).isNull();
+//    }
+
+    //Delete Task By Id
     @Test
-	@Order(5)
+	@Order(6)
 	@Rollback(value = false)
-    public void deleteTaskById() {
-        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(17L).get();
-
-        taskAssignRepo.delete(taskAssignEntity);
+    public void deleteById() {
+        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(22L).get();
+        taskAssignRepo.deleteById(22L);
         TaskAssignEntity taskAssignEntity1 = null;
-
-        Optional<TaskAssignEntity> optionalTaskAssignEntity = taskAssignRepo.findById(17L);
-
+        Optional<TaskAssignEntity> optionalTaskAssignEntity = taskAssignRepo.findById(22L);
         if (optionalTaskAssignEntity.isPresent()) {
             taskAssignEntity1 = optionalTaskAssignEntity.get();
         }
-
         Assertions.assertThat(taskAssignEntity1).isNull();
     }
 
-    @Autowired
-	private JdbcTemplate jdbcTemplate;
+    //Get All Task By User Id
+    @Test
+    @Order(7)
+    public void getAllTaskByAdminUserId() {
+        List<TaskAssignEntity> taskAssignEntity = taskAssignRepo.findByAdminUserIdOrderByPriorityIdAsc("2");
+        Assertions.assertThat(taskAssignEntity.size()).isGreaterThan(0);
+    }
 
-    @Autowired
-	private DataSource dataSource;
+
+    //Update Task Status by Id
+    @Test
+    @Order(8)
+    @Rollback(value = false)
+    public void updateTaskById() {
+        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(25L).get();
+        taskAssignEntity.setTaskStatusId("2");
+        TaskAssignEntity taskAssignEntityUpdated = taskAssignRepo.save(taskAssignEntity);
+        Assertions.assertThat(taskAssignEntityUpdated.getTaskStatusId()).isEqualTo("2");
+    }
+
+//    @Autowired
+//	private JdbcTemplate jdbcTemplate;
+//
+//    @Autowired
+//	private DataSource dataSource;
 
 
 }
