@@ -2,7 +2,6 @@ package com.smefinance.todoapp.setup.controller;
 
 import com.smefinance.todoapp.common.model.DBData;
 import com.smefinance.todoapp.common.model.MessageResponse;
-import com.smefinance.todoapp.operation.task_assign.entity.TaskAssignEntity;
 import com.smefinance.todoapp.setup.entity.SetupPriorityEntity;
 import com.smefinance.todoapp.setup.service.SetupPriorityService;
 import lombok.extern.slf4j.Slf4j;

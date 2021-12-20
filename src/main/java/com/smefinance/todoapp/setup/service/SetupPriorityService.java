@@ -1,7 +1,6 @@
 package com.smefinance.todoapp.setup.service;
 
 import com.smefinance.todoapp.common.model.MessageResponse;
-import com.smefinance.todoapp.operation.task_assign.entity.TaskAssignEntity;
 import com.smefinance.todoapp.setup.entity.SetupPriorityEntity;
 
 import java.util.List;

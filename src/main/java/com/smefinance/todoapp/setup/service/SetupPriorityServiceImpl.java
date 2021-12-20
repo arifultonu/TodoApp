@@ -1,7 +1,6 @@
 package com.smefinance.todoapp.setup.service;
 
 import com.smefinance.todoapp.common.model.MessageResponse;
-import com.smefinance.todoapp.operation.task_assign.entity.TaskAssignEntity;
 import com.smefinance.todoapp.setup.entity.SetupPriorityEntity;
 import com.smefinance.todoapp.setup.repository.SetupPriorityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,7 @@ public class SetupPriorityServiceImpl implements SetupPriorityService{
         existingPriority.setPriorityName(setupPriorityEntity.getPriorityName());
         setupPriorityRepo.save(existingPriority);
         messageResponse.setResponseCode("1");
-        messageResponse.setResponseMessage("Update Priority Successfully ID: " + setupPriorityEntity.getPriorityId());
+        messageResponse.setResponseMessage("Update Priority Successfully!");
         return messageResponse;
     }
 
@@ -51,7 +50,7 @@ public class SetupPriorityServiceImpl implements SetupPriorityService{
         MessageResponse messageResponse = new MessageResponse();
         setupPriorityRepo.deleteById(id);
         messageResponse.setResponseCode("1");
-        messageResponse.setResponseMessage("Task Priority Successfully ID: " + id);
+        messageResponse.setResponseMessage("Delete Task Priority Successfully!");
         return messageResponse;
     }
 }

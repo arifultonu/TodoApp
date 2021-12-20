@@ -12,12 +12,15 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "task_status_setup")
-public class SetupTaskStatusEntity {
-
+@Table(name = "users")
+public class SetupUserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long taskStatusId;
+    private Long id;
+    private String email;
+    private String name;
+    private String password;
+    private String username;
 
-    private String taskStatusName;
+
 }

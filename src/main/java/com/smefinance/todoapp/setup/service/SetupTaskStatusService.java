@@ -9,6 +9,7 @@ import java.util.List;
 public interface SetupTaskStatusService {
     MessageResponse addTaskStatus(SetupTaskStatusEntity setupTaskStatusEntity);
     MessageResponse updateTaskStatus(SetupTaskStatusEntity setupTaskStatusEntity);
+    List<SetupTaskStatusEntity> updateAllTaskStatus(List<SetupTaskStatusEntity> setupTaskStatusEntity);
     List<SetupTaskStatusEntity> getAllTaskStatusList();
     MessageResponse deleteTaskStatus(Long id);
 

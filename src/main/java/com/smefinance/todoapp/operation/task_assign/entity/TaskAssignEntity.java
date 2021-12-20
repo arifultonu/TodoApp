@@ -22,7 +22,7 @@ import static javax.persistence.GenerationType.AUTO;
 @Table(name = "task_create_assign")
 public class TaskAssignEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String adminUserId;

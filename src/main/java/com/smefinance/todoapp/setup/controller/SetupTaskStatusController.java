@@ -27,17 +27,24 @@ public class SetupTaskStatusController {
     }
 
     //Done- param-
-    //get All Priority //Done
+    //get All TaskStatus //Done
     @GetMapping("/getAllTaskStatus")
     public List<SetupTaskStatusEntity> findAllTaskStatus() {
         return setupTaskStatusService.getAllTaskStatusList();
     }
 
     //Done param-RequestBody- {"":""}
-    //Update Priority
+    //Update TaskStatus
     @PutMapping("/updateTaskStatus")
     public MessageResponse updateTaskStatus(@RequestBody SetupTaskStatusEntity setupTaskStatusEntity) {
         return setupTaskStatusService.updateTaskStatus(setupTaskStatusEntity);
+    }
+
+    //Done param-RequestBody- {"":""}
+    //Update TaskStatus
+    @PutMapping("/updateAllTaskStatus")
+    public List<SetupTaskStatusEntity> updateAllTaskStatus(@RequestBody List<SetupTaskStatusEntity> setupTaskStatusEntity) {
+        return setupTaskStatusService.updateAllTaskStatus(setupTaskStatusEntity);
     }
 
     //Done -

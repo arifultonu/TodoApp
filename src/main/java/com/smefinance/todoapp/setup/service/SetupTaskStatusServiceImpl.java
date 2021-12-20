@@ -30,8 +30,14 @@ public class SetupTaskStatusServiceImpl implements SetupTaskStatusService{
         existingTaskStatus.setTaskStatusName(setupTaskStatusEntity.getTaskStatusName());
         setupTaskStatusRepo.save(existingTaskStatus);
         messageResponse.setResponseCode("1");
-        messageResponse.setResponseMessage("Update Task Status Successfully- ID: " + setupTaskStatusEntity.getTaskStatusId());
+//        messageResponse.setResponseMessage("Update Task Status Successfully- ID: " + setupTaskStatusEntity.getTaskStatusId());
+        messageResponse.setResponseMessage("Update Task Status Successfully!");
         return messageResponse;
+    }
+
+    @Override
+    public List<SetupTaskStatusEntity> updateAllTaskStatus(List<SetupTaskStatusEntity> setupTaskStatusEntity) {
+         return setupTaskStatusRepo.saveAll(setupTaskStatusEntity);
     }
 
     @Override
@@ -44,7 +50,7 @@ public class SetupTaskStatusServiceImpl implements SetupTaskStatusService{
         MessageResponse messageResponse = new MessageResponse();
         setupTaskStatusRepo.deleteById(id);
         messageResponse.setResponseCode("1");
-        messageResponse.setResponseMessage("Delete Task Status Successfully- ID: " + id);
+        messageResponse.setResponseMessage("Delete Task Status Successfully!");
         return messageResponse;
     }
 }
