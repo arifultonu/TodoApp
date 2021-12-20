@@ -1,6 +1,7 @@
 package com.smefinance.todoapp.setup.service;
 
 import com.smefinance.todoapp.common.model.MessageResponse;
+import com.smefinance.todoapp.operation.task_assign.entity.TaskAssignEntity;
 import com.smefinance.todoapp.setup.entity.SetupPriorityEntity;
 import com.smefinance.todoapp.setup.repository.SetupPriorityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class SetupPriorityServiceImpl implements SetupPriorityService{
         messageResponse.setResponseCode("1");
         messageResponse.setResponseMessage("Update Priority Successfully ID: " + setupPriorityEntity.getPriorityId());
         return messageResponse;
+    }
+
+    @Override
+    public List<SetupPriorityEntity> updateAllPriority(List<SetupPriorityEntity> setupPriorityEntity) {
+        return setupPriorityRepo.saveAll(setupPriorityEntity);
     }
 
     @Override
