@@ -21,6 +21,12 @@ public class SetupUserEntity {
     private String name;
     private String password;
     private String username;
+    private String role;
 
-
+    public SetupUserEntity(Long id, String password, String username, String role) {
+        this.id = id;
+        this.password = password;
+        this.username = username;
+        this.role = role;
+    }
 }

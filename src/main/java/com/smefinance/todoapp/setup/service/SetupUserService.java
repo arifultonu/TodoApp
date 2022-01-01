@@ -11,4 +11,6 @@ public interface SetupUserService {
     List<SetupUserEntity> updateAllUser(List<SetupUserEntity> setupUserEntity);
     List<SetupUserEntity> getAllUserList();
     MessageResponse deleteUser(Long id);
+
+    SetupUserEntity loadUserByUsername(String username);
 }
