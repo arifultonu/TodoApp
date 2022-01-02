@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 12, 2021 at 02:37 PM
+-- Generation Time: Dec 21, 2021 at 07:55 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(34);
+(90);
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `priority_setup` (
 --
 
 INSERT INTO `priority_setup` (`priority_id`, `priority_name`) VALUES
-(1, 'High'),
+(1, '        High '),
 (2, 'Medium'),
 (3, 'Low');
 
@@ -159,28 +159,50 @@ CREATE TABLE IF NOT EXISTS `task_create_assign` (
   `priority_id` varchar(16) NOT NULL,
   `task_status_id` varchar(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `task_create_assign`
 --
 
 INSERT INTO `task_create_assign` (`id`, `admin_user_id`, `assign_user_id`, `task_id`, `task_details`, `assign_date`, `due_date`, `priority_id`, `task_status_id`) VALUES
-(21, '2', '1', 2, '         Task Assign page Rest API develop Test final   ', '  2021-11-28  ', '2021-10-29', '1', '1'),
-(17, '1', '1', 1, 'Task Assign page Rest API develop Bug', '2021-12-12', '2021-12-12', '3', '3'),
-(11, '1', '2', 2, 'Task Info page Rest API develop Test', '2021-12-07', '2021-12-07', '2', '1'),
-(15, '2', '2', 2, '       Task Assign ', ' 2021-12-08 ', '  2021-10-30  ', '2', '1'),
-(14, '2', '1', 2, '  Task Assign page Rest API develop Test  ', ' 2021-11-29 ', '2021-10-30', '1', '1'),
-(18, '2', '1', 2, '  Tonu 2 Task Assign page Rest API        ', '2021-11-28', '2021-10-29', '1', '3'),
-(19, '2', '1', 2, 'Task Assign page Rest API develop Test 3', ' 2021-11-28 ', '2021-10-29', '1', '1'),
-(22, '2', '2', 2, 'Task Assign page Rest API develop Test 2', '2021-12-08', ' 2021-12-08 ', '1', '1'),
-(23, '2', '2', 2, 'Task Assign page Rest API develop Test 2', ' 2021-12-08 ', '2021-12-08', '1', '1'),
-(24, '2', '2', 2, 'Task Assign page Rest API develop Test 2', '2021-12-08', ' 2021-12-08 ', '1', '1'),
-(25, '2', '2', 2, 'Task Assign page Rest API develop Test 2', '  08/12/2021  ', '  08/12/2021  ', '1', '1'),
-(33, '2', '1', 0, '  ', '  ', '', '2', '2'),
-(31, '2', '', 0, '', '  ', '', '2', '2'),
-(32, '2', '1', 0, 'Testing', '12-12-2021', '12-11-2021', '2', '3'),
-(30, '2', '1', 0, 'Add new Task successfully', '2021-12-12', '2021-12-21', '1', '3');
+(57, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(63, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(15, '2', '2', 2, '       Task Assign ', ' 2021-12-08 ', '  2021-10-30  ', '2', '6'),
+(64, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(59, '2', '1', 0, 'Test Task', '2021-11-23', '2021-12-25', '2', '2'),
+(60, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(67, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(23, '2', '2', 2, '     Task Assign page Rest API develop Test12   ', '      2021-12-08      ', ' 2021-12-08 ', '1', '1'),
+(24, '2', '2', 2, ' Task Assign page Rest API develop Test 2 ', '2021-12-08', ' 2021-12-08 ', '1', '6'),
+(25, '2', '2', 2, ' Task Assign page Rest API develop Test 2 ', '  08/12/2021  ', '  08/12/2021  ', '1', '5'),
+(68, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(69, '2', '1', 0, 'Test 2', '2021-12-08    ', '2021-12-28  ', '2', '5'),
+(36, '2', '2', 2, 'Task Assign page Rest API develop Test 2', '08/12/2021', '08/12/2021', '1', '3'),
+(65, '2', '2', 0, 'Tonu', '2021-12-08    ', '2021-12-18  ', '1', '3'),
+(30, '2', '1', 0, 'Add new Task successfully', '2021-12-12', '2021-12-21', '1', '3'),
+(66, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(43, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(44, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(45, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(46, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(51, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(56, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(58, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(61, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(62, '1', '2', 2, 'Test Junit intrigation', '10-12-2121', '20-12-2121', '1', '1'),
+(70, '2', '1', 0, 'Test Task add', '2021-12-08    ', '2021-12-08  ', '2', '1'),
+(71, '2', '1', 0, ' Task Assign page Rest API    ', '2021-12-08    ', ' 2021-12-08   ', '2', '4'),
+(73, '2', '2', 0, 'Task Test 33', '2021-12-08    ', '2021-12-08  ', '2', '3'),
+(74, '2', '2', 0, 'Test 22', ' 2021/Dec/20 ', '2021/Dec/20', '2', '2'),
+(75, '2', '2', 0, 'Test 66', ' 2021/Dec/20 ', '2021/Dec/20', '3', '1'),
+(76, '2', '2', 0, ' Test nn ', ' 2021/Dec/20 ', ' 2021/Dec/20 ', '2', '2'),
+(77, '2', '2', 0, 'Test mm', ' 2021/Dec/20 ', ' 2021/Dec/20 ', '2', '1'),
+(78, '2', '2', 0, 'Tset yy', ' 2021/Dec/20 ', ' 2021/Dec/20 ', '2', '1'),
+(79, '2', '2', 0, 'Rest ghh', ' 2021/Dec/20 ', ' 2021/Dec/20 ', '3', '2'),
+(80, '2', '1', 0, 'Task Assign page Rest API develop Test 98', ' 2021/Dec/20 ', ' 2021/Dec/20 ', '1', '2'),
+(81, '2', '2', 0, 'Task Assign page Rest API develop Test 76', ' 2021/Dec/20 ', ' 2021/Dec/20 ', '2', '3'),
+(85, '2', '1', 0, 'Test 34', ' 2021/Dec/12', ' 2021/Jan/23', '2', '1');
 
 -- --------------------------------------------------------
 
@@ -219,10 +241,12 @@ CREATE TABLE IF NOT EXISTS `task_status_setup` (
 --
 
 INSERT INTO `task_status_setup` (`task_status_id`, `task_status_name`) VALUES
-(1, 'Pending'),
-(2, 'Complete'),
-(3, 'Running'),
-(4, 'On Development');
+(1, '      Openmm'),
+(2, 'Pending'),
+(3, '  In-Progress  '),
+(4, '  Completed  '),
+(5, 'In-Review'),
+(6, '    Rejected    ');
 
 -- --------------------------------------------------------
 
@@ -240,15 +264,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKr43af9ap4edm43mmtq01oddj6` (`username`),
   UNIQUE KEY `UK6dotkott2kjsp8vw4d0m25fb7` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `password`, `username`) VALUES
-(1, 'tonu2050@gmail.com', 'Tonu', '123456', 'tonu'),
-(2, 'arifultonu007@gmail.com', 'Ariful', '123456', 'ariful');
+(1, ' tonu2050@gmail.comm', 'Tonu', '123456', 'tonu'),
+(2, 'arifultonu007@gmail.com', 'Ariful', '123456', 'ariful'),
+(87, 'adeeba@gmail.com', 'Adeeba', '123456', 'adeeba');
 
 -- --------------------------------------------------------
 

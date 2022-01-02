@@ -6,8 +6,7 @@ import com.smefinance.todoapp.common.model.DBData;
 import com.smefinance.todoapp.securityconfiguration.jwt.JwtTokenUtil;
 import com.smefinance.todoapp.securityconfiguration.jwt.JwtUserDetails;
 import com.smefinance.todoapp.setup.entity.SetupUserEntity;
-import com.smefinance.todoapp.setup.service.SetupUserService;
-import lombok.extern.slf4j.Slf4j;
+import com.smefinance.todoapp.setup.repository.SetupUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -25,7 +24,6 @@ import java.util.Objects;
 
 @RestController
 @CrossOrigin(origins = DBData.CROSS_ORIGIN)
-@Slf4j
 public class JwtAuthenticationRestController {
 
 	@Value("${jwt.http.request.header}")
@@ -37,23 +35,28 @@ public class JwtAuthenticationRestController {
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 
-//	@Autowired
-//	private UserDetailsService jwtInMemoryUserDetailsService;
+	@Autowired
+	private UserDetailsService jwtInMemoryUserDetailsService;
 
 	@Autowired
-	private SetupUserService setupUserService;
+	private SetupUserRepo setupUserRepo;
 
 	@RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)
 			throws AuthenticationException {
-		log.info("Called Authentic!!");
+
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
-		final SetupUserEntity setupUserEntity = setupUserService.loadUserByUsername(authenticationRequest.getUsername());
+		final UserDetails userDetails = jwtInMemoryUserDetailsService
+				.loadUserByUsername(authenticationRequest.getUsername());
 
-		final String token = jwtTokenUtil.generateToken(setupUserEntity);
+		final String token = jwtTokenUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new JwtTokenResponse(token));
+
+		SetupUserEntity setupUserEntity = setupUserRepo.findByUserName(authenticationRequest.getUsername());
+		final String role = setupUserEntity.getRole();
+
+		return ResponseEntity.ok(new JwtTokenResponse(token, role));
 	}
 
 	@RequestMapping(value = "${jwt.refresh.token.uri}", method = RequestMethod.GET)
@@ -61,15 +64,16 @@ public class JwtAuthenticationRestController {
 		String authToken = request.getHeader(tokenHeader);
 		final String token = authToken.substring(7);
 		String username = jwtTokenUtil.getUsernameFromToken(token);
-
-//		setupUserService.loadUserByUsername(username);
-
-		SetupUserEntity user = (SetupUserEntity) setupUserService.loadUserByUsername(username);
+		JwtUserDetails user = (JwtUserDetails) jwtInMemoryUserDetailsService.loadUserByUsername(username);
 
 		if (jwtTokenUtil.canTokenBeRefreshed(token)) {
 			String refreshedToken = jwtTokenUtil.refreshToken(token);
 			System.out.println("refreshedToken: "+refreshedToken);
-			return ResponseEntity.ok(new JwtTokenResponse(refreshedToken));
+
+			SetupUserEntity setupUserEntity = setupUserRepo.findByUserName(username);
+			final String role = setupUserEntity.getRole();
+
+			return ResponseEntity.ok(new JwtTokenResponse(refreshedToken, role));
 		} else {
 			return ResponseEntity.badRequest().body(null);
 		}

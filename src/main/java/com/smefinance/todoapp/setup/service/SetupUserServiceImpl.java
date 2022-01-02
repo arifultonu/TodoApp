@@ -3,18 +3,14 @@ package com.smefinance.todoapp.setup.service;
 import com.smefinance.todoapp.common.model.MessageResponse;
 import com.smefinance.todoapp.setup.entity.SetupUserEntity;
 import com.smefinance.todoapp.setup.repository.SetupUserRepo;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-@Slf4j
-public class SetupUserServiceImpl implements SetupUserService {
+public class SetupUserServiceImpl implements SetupUserService{
 
     @Autowired
     SetupUserRepo setupUserRepo;
@@ -22,6 +18,12 @@ public class SetupUserServiceImpl implements SetupUserService {
     @Override
     public MessageResponse addUser(SetupUserEntity setupUserEntity) {
         MessageResponse messageResponse = new MessageResponse();
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String password = encoder.encode(setupUserEntity.getPassword());
+        setupUserEntity.setPassword(password);
+        setupUserEntity.setRole("User");
+
         setupUserRepo.save(setupUserEntity);
         messageResponse.setResponseCode("1");
         messageResponse.setResponseMessage("Add New User Successfully!");
@@ -57,19 +59,4 @@ public class SetupUserServiceImpl implements SetupUserService {
         messageResponse.setResponseMessage("Delete User Successfully!");
         return messageResponse;
     }
-
-    @Override
-    public SetupUserEntity loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<SetupUserEntity> inMemoryUserList = new ArrayList<>();
-
-        log.info("username: " + username);
-        Optional<SetupUserEntity> findFirst = inMemoryUserList.stream()
-                .filter(user -> user.getUsername().equals(username)).findFirst();
-        if (!findFirst.isPresent()) {
-            throw new UsernameNotFoundException(String.format("USER_NOT_FOUND '%s'.", username));
-        }
-        return findFirst.get();
-    }
-
-
 }

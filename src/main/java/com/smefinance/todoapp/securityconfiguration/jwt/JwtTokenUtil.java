@@ -1,6 +1,5 @@
 package com.smefinance.todoapp.securityconfiguration.jwt;
 
-import com.smefinance.todoapp.setup.entity.SetupUserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Clock;
 import io.jsonwebtoken.Jwts;
@@ -61,9 +60,9 @@ public class JwtTokenUtil implements Serializable {
 		return false;
 	}
 
-	public String generateToken(SetupUserEntity setupUserEntity) {
+	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
-		return doGenerateToken(claims, setupUserEntity.getUsername());
+		return doGenerateToken(claims, userDetails.getUsername());
 	}
 
 	private String doGenerateToken(Map<String, Object> claims, String subject) {
