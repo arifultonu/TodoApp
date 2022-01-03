@@ -57,11 +57,18 @@ public class TaskAssignController {
         return taskAssignService.getTaskAssignById(id);
     }
 
-    //Done- param-AdminUserId- 2
+    //Done- param-AdminUserId
     //Get All Task By admin User Id
     @GetMapping("/getAllTaskByUserId/{adminUserId}")
     public  List<TaskAssignEntity> findAllTaskAssignByAdminUserId(@PathVariable String adminUserId) {
         return taskAssignService.getTaskAssignByAdminUserId(adminUserId);
+    }
+
+    //Done- param-AssignUserId
+    //Get All Task By Assign User Id
+    @GetMapping("/getAllTaskByAssignUserId/{assignUserId}")
+    public  List<TaskAssignEntity> findAllTaskAssignByAssignUserId(@PathVariable String assignUserId) {
+        return taskAssignService.getTaskAssignByAssignUserId(assignUserId);
     }
 
     //Done - param- [{"":""},{"":""}]

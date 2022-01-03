@@ -54,9 +54,11 @@ public class JwtAuthenticationRestController {
 
 
 		SetupUserEntity setupUserEntity = setupUserRepo.findByUserName(authenticationRequest.getUsername());
+		final Long id = setupUserEntity.getId();
+		final String name = setupUserEntity.getName();
 		final String role = setupUserEntity.getRole();
 
-		return ResponseEntity.ok(new JwtTokenResponse(token, role));
+		return ResponseEntity.ok(new JwtTokenResponse(id, name, role, token));
 	}
 
 	@RequestMapping(value = "${jwt.refresh.token.uri}", method = RequestMethod.GET)
@@ -71,9 +73,11 @@ public class JwtAuthenticationRestController {
 			System.out.println("refreshedToken: "+refreshedToken);
 
 			SetupUserEntity setupUserEntity = setupUserRepo.findByUserName(username);
+			final Long id = setupUserEntity.getId();
+			final String name = setupUserEntity.getName();
 			final String role = setupUserEntity.getRole();
 
-			return ResponseEntity.ok(new JwtTokenResponse(refreshedToken, role));
+			return ResponseEntity.ok(new JwtTokenResponse(id, name, role, refreshedToken));
 		} else {
 			return ResponseEntity.badRequest().body(null);
 		}

@@ -37,6 +37,11 @@ public class TaskAssignService {
         return taskAssignRepo.findByAdminUserIdOrderByPriorityIdAsc(adminUserId);
     }
 
+    //Get All Task by Assign User Id
+    public List<TaskAssignEntity> getTaskAssignByAssignUserId(String assignUserId) {
+        return taskAssignRepo.findByAssignUserIdOrderByPriorityIdAsc(assignUserId);
+    }
+
     public MessageResponse saveTaskAssign(TaskAssignEntity taskAssignEntity) {
         MessageResponse messageResponse = new MessageResponse();
         taskAssignRepo.save(taskAssignEntity);

@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface TaskAssignRepo extends JpaRepository<TaskAssignEntity, Long> {
     List<TaskAssignEntity> findByAdminUserIdOrderByPriorityIdAsc(String adminUserId);
+    List<TaskAssignEntity> findByAssignUserIdOrderByPriorityIdAsc(String assignUserId);
 
 }
