@@ -7,6 +7,7 @@ import com.smefinance.todoapp.securityconfiguration.jwt.JwtTokenUtil;
 import com.smefinance.todoapp.securityconfiguration.jwt.JwtUserDetails;
 import com.smefinance.todoapp.setup.entity.SetupUserEntity;
 import com.smefinance.todoapp.setup.repository.SetupUserRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ import java.util.Objects;
 
 @RestController
 @CrossOrigin(origins = DBData.CROSS_ORIGIN)
+@Slf4j
 public class JwtAuthenticationRestController {
 
 	@Value("${jwt.http.request.header}")
@@ -49,16 +51,17 @@ public class JwtAuthenticationRestController {
 
 		final UserDetails userDetails = jwtInMemoryUserDetailsService
 				.loadUserByUsername(authenticationRequest.getUsername());
-
 		final String token = jwtTokenUtil.generateToken(userDetails);
-
 
 		SetupUserEntity setupUserEntity = setupUserRepo.findByUserName(authenticationRequest.getUsername());
 		final Long id = setupUserEntity.getId();
 		final String name = setupUserEntity.getName();
 		final String role = setupUserEntity.getRole();
+		final String username = setupUserEntity.getUsername();
 
-		return ResponseEntity.ok(new JwtTokenResponse(id, name, role, token));
+		log.info("username: "+username);
+
+		return ResponseEntity.ok(new JwtTokenResponse(id, name, role, username, token));
 	}
 
 	@RequestMapping(value = "${jwt.refresh.token.uri}", method = RequestMethod.GET)
@@ -77,7 +80,7 @@ public class JwtAuthenticationRestController {
 			final String name = setupUserEntity.getName();
 			final String role = setupUserEntity.getRole();
 
-			return ResponseEntity.ok(new JwtTokenResponse(id, name, role, refreshedToken));
+			return ResponseEntity.ok(new JwtTokenResponse(id, name, role, username, refreshedToken));
 		} else {
 			return ResponseEntity.badRequest().body(null);
 		}

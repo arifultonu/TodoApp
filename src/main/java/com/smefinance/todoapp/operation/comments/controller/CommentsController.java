@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/todo")
 @CrossOrigin(origins = DBData.CROSS_ORIGIN)
@@ -23,4 +25,12 @@ public class CommentsController {
     public MessageResponse addComment(@RequestBody CommentsEntity commentsEntity) {
         return commentsService.addComment(commentsEntity);
     }
+
+    //Done- param-taskId
+    //Get All Task By Task Id
+    @GetMapping("/getAllCommentsByTaskId/{taskId}")
+    public List<CommentsEntity> findAllTaskAssignByAdminUserId(@PathVariable String taskId) {
+        return commentsService.getCommentsByTaskId(taskId);
+    }
+
 }
