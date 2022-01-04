@@ -30,4 +30,10 @@ public class CommentsServiceImpl implements CommentsService {
     public List<CommentsEntity> getCommentsByTaskId(String taskId) {
         return commentsRepo.findByTaskIdOrderByDateAsc(taskId);
     }
+
+    @Override
+    public List<CommentsEntity> deleteCommentByTaskId(String taskId) {
+//        return commentsRepo.deleteCommentByTaskId(taskId);
+        return commentsRepo.deleteCommentByTaskId(taskId);
+    }
 }

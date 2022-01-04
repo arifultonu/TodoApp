@@ -9,4 +9,5 @@ import java.util.List;
 public interface CommentsService {
     MessageResponse addComment(CommentsEntity commentsEntity);
     List<CommentsEntity> getCommentsByTaskId(String taskId);
+    List<CommentsEntity> deleteCommentByTaskId(String taskId);
 }

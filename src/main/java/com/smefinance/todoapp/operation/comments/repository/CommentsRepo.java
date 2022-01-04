@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface CommentsRepo extends JpaRepository<CommentsEntity, Long> {
     List<CommentsEntity> findByTaskIdOrderByDateAsc(String taskId);
+    List<CommentsEntity> deleteCommentByTaskId(String taskId);
 
 }

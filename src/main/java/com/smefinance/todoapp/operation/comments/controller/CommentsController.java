@@ -33,4 +33,13 @@ public class CommentsController {
         return commentsService.getCommentsByTaskId(taskId);
     }
 
+    //Done - param -id/serial- 20
+    //Delete Comment By Task ID
+    @DeleteMapping("/deleteCommentByTaskId/{taskId}")
+    public List<CommentsEntity> deleteComment(@PathVariable String taskId) {
+        return commentsService.deleteCommentByTaskId(taskId);
+    }
+
+
+
 }
