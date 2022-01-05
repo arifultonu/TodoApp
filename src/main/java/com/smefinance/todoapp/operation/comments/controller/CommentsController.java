@@ -29,7 +29,7 @@ public class CommentsController {
     //Done- param-taskId
     //Get All Task By Task Id
     @GetMapping("/getAllCommentsByTaskId/{taskId}")
-    public List<CommentsEntity> findAllTaskAssignByAdminUserId(@PathVariable String taskId) {
+    public List<CommentsEntity> findAllCommentsByTaskId(@PathVariable String taskId) {
         return commentsService.getCommentsByTaskId(taskId);
     }
 
