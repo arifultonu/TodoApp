@@ -16,8 +16,9 @@ import javax.persistence.*;
 @Table(name = "priority_setup")
 public class SetupPriorityEntity {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long priorityId;
 
     private String priorityName;

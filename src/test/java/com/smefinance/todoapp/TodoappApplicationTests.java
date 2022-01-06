@@ -50,7 +50,7 @@ class TodoappApplicationTests {
                 .taskId(2)
                 .taskDetails("Test Junit intrigation")
                 .assignDate("10-12-2121")
-                .dueDate("20-12-2121")
+                .dueDate("2022-01-04")
                 .priorityId("1")
                 .taskStatusId("1")
                 .build();
@@ -63,8 +63,8 @@ class TodoappApplicationTests {
     @Test
     @Order(2)
     public void getTaskById() {
-        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(15L).get();
-        Assertions.assertThat(taskAssignEntity.getId()).isEqualTo(15L);
+        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(1L).get();
+        Assertions.assertThat(taskAssignEntity.getId()).isEqualTo(1L);
     }
 
     //Get Task by user id
@@ -80,27 +80,27 @@ class TodoappApplicationTests {
     @Order(4)
     @Rollback(value = false)
     public void updateTask() {
-        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(15L).get();
-        taskAssignEntity.setTaskStatusId("3");
+        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(6L).get();
+        taskAssignEntity.setTaskStatusId("2");
         TaskAssignEntity taskAssignEntityUpdated = taskAssignRepo.save(taskAssignEntity);
-        Assertions.assertThat(taskAssignEntityUpdated.getTaskStatusId()).isEqualTo("3");
+        Assertions.assertThat(taskAssignEntityUpdated.getTaskStatusId()).isEqualTo("2");
     }
 
 
     //Delete Task By Id
-//    @Test
-//    @Order(6)
-//    @Rollback(value = false)
-//    public void deleteById() {
-//        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(15L).get();
-//        taskAssignRepo.deleteById(15L);
-//        TaskAssignEntity taskAssignEntity1 = null;
-//        Optional<TaskAssignEntity> optionalTaskAssignEntity = taskAssignRepo.findById(15L);
-//        if (optionalTaskAssignEntity.isPresent()) {
-//            taskAssignEntity1 = optionalTaskAssignEntity.get();
-//        }
-//        Assertions.assertThat(taskAssignEntity1).isNull();
-//    }
+    @Test
+    @Order(6)
+    @Rollback(value = false)
+    public void deleteById() {
+        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(8L).get();
+        taskAssignRepo.deleteById(8L);
+        TaskAssignEntity taskAssignEntity1 = null;
+        Optional<TaskAssignEntity> optionalTaskAssignEntity = taskAssignRepo.findById(8L);
+        if (optionalTaskAssignEntity.isPresent()) {
+            taskAssignEntity1 = optionalTaskAssignEntity.get();
+        }
+        Assertions.assertThat(taskAssignEntity1).isNull();
+    }
 
     //Get All Task By User Id
     @Test
@@ -116,7 +116,7 @@ class TodoappApplicationTests {
     @Order(6)
     @Rollback(value = false)
     public void updateTaskById() {
-        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(15L).get();
+        TaskAssignEntity taskAssignEntity = taskAssignRepo.findById(6L).get();
         taskAssignEntity.setTaskStatusId("2");
         TaskAssignEntity taskAssignEntityUpdated = taskAssignRepo.save(taskAssignEntity);
         Assertions.assertThat(taskAssignEntityUpdated.getTaskStatusId()).isEqualTo("2");
@@ -156,8 +156,8 @@ class TodoappApplicationTests {
     @Test
     @Order(9)
     public void getCommentById() {
-        CommentsEntity commentsEntity = commentsRepo.findById(94L).get();
-        Assertions.assertThat(commentsEntity.getId()).isEqualTo(94L);
+        CommentsEntity commentsEntity = commentsRepo.findById(99L).get();
+        Assertions.assertThat(commentsEntity.getId()).isEqualTo(99L);
     }
 
     //Delete Comment By Id
@@ -165,10 +165,10 @@ class TodoappApplicationTests {
     @Order(10)
     @Rollback(value = false)
     public void deleteCommentById() {
-        CommentsEntity commentsEntity = commentsRepo.findById(94L).get();
-        commentsRepo.deleteById(94L);
+        CommentsEntity commentsEntity = commentsRepo.findById(99L).get();
+        commentsRepo.deleteById(99L);
         CommentsEntity commentsEntity1 = null;
-        Optional<CommentsEntity> optionalCommentsEntity1 = commentsRepo.findById(94L);
+        Optional<CommentsEntity> optionalCommentsEntity1 = commentsRepo.findById(99L);
         if (optionalCommentsEntity1.isPresent()) {
             commentsEntity1 = optionalCommentsEntity1.get();
         }
@@ -211,7 +211,7 @@ class TodoappApplicationTests {
     @Order(13)
     @Rollback(value = false)
     public void updateUserById() {
-        SetupUserEntity setupUserEntity = setupUserRepo.findById(103L).get();
+        SetupUserEntity setupUserEntity = setupUserRepo.findById(91L).get();
         setupUserEntity.setName("Mr. Avaldas Taylor");
         SetupUserEntity setupUserEntityUpdated = setupUserRepo.save(setupUserEntity);
         Assertions.assertThat(setupUserEntityUpdated.getName()).isEqualTo("Mr. Avaldas Taylor");
@@ -222,118 +222,118 @@ class TodoappApplicationTests {
     @Order(14)
     @Rollback(value = false)
     public void deleteUserById() {
-        SetupUserEntity setupUserEntity = setupUserRepo.findById(103L).get();
-        setupUserRepo.deleteById(103L);
+        SetupUserEntity setupUserEntity = setupUserRepo.findById(91L).get();
+        setupUserRepo.deleteById(91L);
         SetupUserEntity setupUserEntity1 = null;
-        Optional<SetupUserEntity> optionalSetupUserEntity1 = setupUserRepo.findById(103L);
+        Optional<SetupUserEntity> optionalSetupUserEntity1 = setupUserRepo.findById(91L);
         if (optionalSetupUserEntity1.isPresent()) {
             setupUserEntity1 = optionalSetupUserEntity1.get();
         }
         Assertions.assertThat(setupUserEntity1).isNull();
     }
 
-
-    ////=====Setup Task Status====////
-    @Autowired
-    private SetupTaskStatusRepo setupTaskStatusRepo;
-
-    // Add New Task Status
-    @Test
-    @Order(15)
-    @Rollback(value = false)
-    void addTaskStatus() {
-        SetupTaskStatusEntity setupTaskStatusEntity = SetupTaskStatusEntity.builder()
-                .taskStatusName("Task Status Test")
-                .build();
-        setupTaskStatusRepo.save(setupTaskStatusEntity);
-        Assertions.assertThat(setupTaskStatusEntity.getTaskStatusId()).isGreaterThan(0);
-    }
-
-
-    //Find all Task Status
-    @Test
-    @Order(16)
-    public void getTaskStatusList() {
-        List<SetupTaskStatusEntity> setupTaskStatusEntity = setupTaskStatusRepo.findAll();
-        Assertions.assertThat(setupTaskStatusEntity.size()).isGreaterThan(0);
-    }
-
-    //Update Task Status by Id
-    @Test
-    @Order(17)
-    @Rollback(value = false)
-    public void updateTaskStatusById() {
-        SetupTaskStatusEntity setupTaskStatusEntity = setupTaskStatusRepo.findById(7L).get();
-        setupTaskStatusEntity.setTaskStatusName("Update Task Status");
-        SetupTaskStatusEntity setupTaskStatusEntityUpdated = setupTaskStatusRepo.save(setupTaskStatusEntity);
-        Assertions.assertThat(setupTaskStatusEntityUpdated.getTaskStatusName()).isEqualTo("Update Task Status");
-    }
-
-    //Delete Task Status By Id
-    @Test
-    @Order(18)
-    @Rollback(value = false)
-    public void deleteTaskStatusById() {
-        SetupTaskStatusEntity setupTaskStatusEntity = setupTaskStatusRepo.findById(7L).get();
-        setupTaskStatusRepo.deleteById(7L);
-        SetupTaskStatusEntity setupTaskStatusEntity1 = null;
-        Optional<SetupTaskStatusEntity> optionalSetupTaskStatusEntity1 = setupTaskStatusRepo.findById(7L);
-        if (optionalSetupTaskStatusEntity1.isPresent()) {
-            setupTaskStatusEntity1 = optionalSetupTaskStatusEntity1.get();
-        }
-        Assertions.assertThat(setupTaskStatusEntity1).isNull();
-    }
-
-    ////=====Setup Task Priority====////
-    @Autowired
-    private SetupPriorityRepo setupPriorityRepo;
-
-    // Add New Task Priority
-    @Test
-    @Order(19)
-    @Rollback(value = false)
-    void addTaskPriority() {
-        SetupPriorityEntity setupPriorityEntity = SetupPriorityEntity.builder()
-                .priorityName("Priority Test")
-                .build();
-        setupPriorityRepo.save(setupPriorityEntity);
-        Assertions.assertThat(setupPriorityEntity.getPriorityId()).isGreaterThan(0);
-    }
-
-
-    //Find all Task Priority
-    @Test
-    @Order(20)
-    public void getTaskPriorityList() {
-        List<SetupPriorityEntity> setupPriorityEntity = setupPriorityRepo.findAll();
-        Assertions.assertThat(setupPriorityEntity.size()).isGreaterThan(0);
-    }
-
-    //Update Task Priority by Id
-    @Test
-    @Order(21)
-    @Rollback(value = false)
-    public void updatePriorityById() {
-        SetupPriorityEntity setupPriorityEntity = setupPriorityRepo.findById(4L).get();
-        setupPriorityEntity.setPriorityName("Update Task Status");
-        SetupPriorityEntity setupPriorityEntityUpdated = setupPriorityRepo.save(setupPriorityEntity);
-        Assertions.assertThat(setupPriorityEntityUpdated.getPriorityName()).isEqualTo("Update Task Status");
-    }
-
-    //Delete Task Status By Id
-    @Test
-    @Order(22)
-    @Rollback(value = false)
-    public void deletePriorityById() {
-        SetupPriorityEntity setupPriorityEntity = setupPriorityRepo.findById(4L).get();
-        setupPriorityRepo.deleteById(4L);
-        SetupPriorityEntity setupPriorityEntity1 = null;
-        Optional<SetupPriorityEntity> optionalSetupPriorityEntity1 = setupPriorityRepo.findById(4L);
-        if (optionalSetupPriorityEntity1.isPresent()) {
-            setupPriorityEntity1 = optionalSetupPriorityEntity1.get();
-        }
-        Assertions.assertThat(setupPriorityEntity1).isNull();
-    }
+//
+//    ////=====Setup Task Status====////
+//    @Autowired
+//    private SetupTaskStatusRepo setupTaskStatusRepo;
+//
+//    // Add New Task Status
+//    @Test
+//    @Order(15)
+//    @Rollback(value = false)
+//    void addTaskStatus() {
+//        SetupTaskStatusEntity setupTaskStatusEntity = SetupTaskStatusEntity.builder()
+//                .taskStatusName("Task Status Test")
+//                .build();
+//        setupTaskStatusRepo.save(setupTaskStatusEntity);
+//        Assertions.assertThat(setupTaskStatusEntity.getTaskStatusId()).isGreaterThan(0);
+//    }
+//
+//
+//    //Find all Task Status
+//    @Test
+//    @Order(16)
+//    public void getTaskStatusList() {
+//        List<SetupTaskStatusEntity> setupTaskStatusEntity = setupTaskStatusRepo.findAll();
+//        Assertions.assertThat(setupTaskStatusEntity.size()).isGreaterThan(0);
+//    }
+//
+//    //Update Task Status by Id
+//    @Test
+//    @Order(17)
+//    @Rollback(value = false)
+//    public void updateTaskStatusById() {
+//        SetupTaskStatusEntity setupTaskStatusEntity = setupTaskStatusRepo.findById(100L).get();
+//        setupTaskStatusEntity.setTaskStatusName("Update Task Status");
+//        SetupTaskStatusEntity setupTaskStatusEntityUpdated = setupTaskStatusRepo.save(setupTaskStatusEntity);
+//        Assertions.assertThat(setupTaskStatusEntityUpdated.getTaskStatusName()).isEqualTo("Update Task Status");
+//    }
+//
+//    //Delete Task Status By Id
+//    @Test
+//    @Order(18)
+//    @Rollback(value = false)
+//    public void deleteTaskStatusById() {
+//        SetupTaskStatusEntity setupTaskStatusEntity = setupTaskStatusRepo.findById(100L).get();
+//        setupTaskStatusRepo.deleteById(100L);
+//        SetupTaskStatusEntity setupTaskStatusEntity1 = null;
+//        Optional<SetupTaskStatusEntity> optionalSetupTaskStatusEntity1 = setupTaskStatusRepo.findById(100L);
+//        if (optionalSetupTaskStatusEntity1.isPresent()) {
+//            setupTaskStatusEntity1 = optionalSetupTaskStatusEntity1.get();
+//        }
+//        Assertions.assertThat(setupTaskStatusEntity1).isNull();
+//    }
+//
+//    ////=====Setup Task Priority====////
+//    @Autowired
+//    private SetupPriorityRepo setupPriorityRepo;
+//
+//    // Add New Task Priority
+//    @Test
+//    @Order(19)
+//    @Rollback(value = false)
+//    void addTaskPriority() {
+//        SetupPriorityEntity setupPriorityEntity = SetupPriorityEntity.builder()
+//                .priorityName("Priority Test")
+//                .build();
+//        setupPriorityRepo.save(setupPriorityEntity);
+//        Assertions.assertThat(setupPriorityEntity.getPriorityId()).isGreaterThan(0);
+//    }
+//
+//
+//    //Find all Task Priority
+//    @Test
+//    @Order(20)
+//    public void getTaskPriorityList() {
+//        List<SetupPriorityEntity> setupPriorityEntity = setupPriorityRepo.findAll();
+//        Assertions.assertThat(setupPriorityEntity.size()).isGreaterThan(0);
+//    }
+//
+//    //Update Task Priority by Id
+//    @Test
+//    @Order(21)
+//    @Rollback(value = false)
+//    public void updatePriorityById() {
+//        SetupPriorityEntity setupPriorityEntity = setupPriorityRepo.findById(101L).get();
+//        setupPriorityEntity.setPriorityName("Update Task Status");
+//        SetupPriorityEntity setupPriorityEntityUpdated = setupPriorityRepo.save(setupPriorityEntity);
+//        Assertions.assertThat(setupPriorityEntityUpdated.getPriorityName()).isEqualTo("Update Task Status");
+//    }
+//
+//    //Delete Task Status By Id
+//    @Test
+//    @Order(22)
+//    @Rollback(value = false)
+//    public void deletePriorityById() {
+//        SetupPriorityEntity setupPriorityEntity = setupPriorityRepo.findById(101L).get();
+//        setupPriorityRepo.deleteById(101L);
+//        SetupPriorityEntity setupPriorityEntity1 = null;
+//        Optional<SetupPriorityEntity> optionalSetupPriorityEntity1 = setupPriorityRepo.findById(101L);
+//        if (optionalSetupPriorityEntity1.isPresent()) {
+//            setupPriorityEntity1 = optionalSetupPriorityEntity1.get();
+//        }
+//        Assertions.assertThat(setupPriorityEntity1).isNull();
+//    }
 
 
 }

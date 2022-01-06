@@ -22,16 +22,14 @@ import static javax.persistence.GenerationType.AUTO;
 @Table(name = "task_create_assign")
 public class TaskAssignEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String adminUserId;
     private String assignUserId;
     private int taskId;
     private String taskDetails;
-//    @JsonFormat(pattern="dd/MM/yyyy")
     private String assignDate;
-//    @JsonFormat(pattern="dd/MM/yyyy")
     private String dueDate;
     private String priorityId;
     private String taskStatusId;

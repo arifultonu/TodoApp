@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class SetupTaskStatusEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskStatusId;
 
     private String taskStatusName;
