@@ -232,108 +232,108 @@ class TodoappApplicationTests {
         Assertions.assertThat(setupUserEntity1).isNull();
     }
 
-//
-//    ////=====Setup Task Status====////
-//    @Autowired
-//    private SetupTaskStatusRepo setupTaskStatusRepo;
-//
-//    // Add New Task Status
-//    @Test
-//    @Order(15)
-//    @Rollback(value = false)
-//    void addTaskStatus() {
-//        SetupTaskStatusEntity setupTaskStatusEntity = SetupTaskStatusEntity.builder()
-//                .taskStatusName("Task Status Test")
-//                .build();
-//        setupTaskStatusRepo.save(setupTaskStatusEntity);
-//        Assertions.assertThat(setupTaskStatusEntity.getTaskStatusId()).isGreaterThan(0);
-//    }
-//
-//
-//    //Find all Task Status
-//    @Test
-//    @Order(16)
-//    public void getTaskStatusList() {
-//        List<SetupTaskStatusEntity> setupTaskStatusEntity = setupTaskStatusRepo.findAll();
-//        Assertions.assertThat(setupTaskStatusEntity.size()).isGreaterThan(0);
-//    }
-//
-//    //Update Task Status by Id
-//    @Test
-//    @Order(17)
-//    @Rollback(value = false)
-//    public void updateTaskStatusById() {
-//        SetupTaskStatusEntity setupTaskStatusEntity = setupTaskStatusRepo.findById(100L).get();
-//        setupTaskStatusEntity.setTaskStatusName("Update Task Status");
-//        SetupTaskStatusEntity setupTaskStatusEntityUpdated = setupTaskStatusRepo.save(setupTaskStatusEntity);
-//        Assertions.assertThat(setupTaskStatusEntityUpdated.getTaskStatusName()).isEqualTo("Update Task Status");
-//    }
-//
-//    //Delete Task Status By Id
-//    @Test
-//    @Order(18)
-//    @Rollback(value = false)
-//    public void deleteTaskStatusById() {
-//        SetupTaskStatusEntity setupTaskStatusEntity = setupTaskStatusRepo.findById(100L).get();
-//        setupTaskStatusRepo.deleteById(100L);
-//        SetupTaskStatusEntity setupTaskStatusEntity1 = null;
-//        Optional<SetupTaskStatusEntity> optionalSetupTaskStatusEntity1 = setupTaskStatusRepo.findById(100L);
-//        if (optionalSetupTaskStatusEntity1.isPresent()) {
-//            setupTaskStatusEntity1 = optionalSetupTaskStatusEntity1.get();
-//        }
-//        Assertions.assertThat(setupTaskStatusEntity1).isNull();
-//    }
-//
-//    ////=====Setup Task Priority====////
-//    @Autowired
-//    private SetupPriorityRepo setupPriorityRepo;
-//
-//    // Add New Task Priority
-//    @Test
-//    @Order(19)
-//    @Rollback(value = false)
-//    void addTaskPriority() {
-//        SetupPriorityEntity setupPriorityEntity = SetupPriorityEntity.builder()
-//                .priorityName("Priority Test")
-//                .build();
-//        setupPriorityRepo.save(setupPriorityEntity);
-//        Assertions.assertThat(setupPriorityEntity.getPriorityId()).isGreaterThan(0);
-//    }
-//
-//
-//    //Find all Task Priority
-//    @Test
-//    @Order(20)
-//    public void getTaskPriorityList() {
-//        List<SetupPriorityEntity> setupPriorityEntity = setupPriorityRepo.findAll();
-//        Assertions.assertThat(setupPriorityEntity.size()).isGreaterThan(0);
-//    }
-//
-//    //Update Task Priority by Id
-//    @Test
-//    @Order(21)
-//    @Rollback(value = false)
-//    public void updatePriorityById() {
-//        SetupPriorityEntity setupPriorityEntity = setupPriorityRepo.findById(101L).get();
-//        setupPriorityEntity.setPriorityName("Update Task Status");
-//        SetupPriorityEntity setupPriorityEntityUpdated = setupPriorityRepo.save(setupPriorityEntity);
-//        Assertions.assertThat(setupPriorityEntityUpdated.getPriorityName()).isEqualTo("Update Task Status");
-//    }
-//
-//    //Delete Task Status By Id
-//    @Test
-//    @Order(22)
-//    @Rollback(value = false)
-//    public void deletePriorityById() {
-//        SetupPriorityEntity setupPriorityEntity = setupPriorityRepo.findById(101L).get();
-//        setupPriorityRepo.deleteById(101L);
-//        SetupPriorityEntity setupPriorityEntity1 = null;
-//        Optional<SetupPriorityEntity> optionalSetupPriorityEntity1 = setupPriorityRepo.findById(101L);
-//        if (optionalSetupPriorityEntity1.isPresent()) {
-//            setupPriorityEntity1 = optionalSetupPriorityEntity1.get();
-//        }
-//        Assertions.assertThat(setupPriorityEntity1).isNull();
-//    }
+
+    ////=====Setup Task Status====////
+    @Autowired
+    private SetupTaskStatusRepo setupTaskStatusRepo;
+
+    // Add New Task Status
+    @Test
+    @Order(15)
+    @Rollback(value = false)
+    void addTaskStatus() {
+        SetupTaskStatusEntity setupTaskStatusEntity = SetupTaskStatusEntity.builder()
+                .taskStatusName("Task Status Test")
+                .build();
+        setupTaskStatusRepo.save(setupTaskStatusEntity);
+        Assertions.assertThat(setupTaskStatusEntity.getTaskStatusId()).isGreaterThan(0);
+    }
+
+
+    //Find all Task Status
+    @Test
+    @Order(16)
+    public void getTaskStatusList() {
+        List<SetupTaskStatusEntity> setupTaskStatusEntity = setupTaskStatusRepo.findAll();
+        Assertions.assertThat(setupTaskStatusEntity.size()).isGreaterThan(0);
+    }
+
+    //Update Task Status by Id
+    @Test
+    @Order(17)
+    @Rollback(value = false)
+    public void updateTaskStatusById() {
+        SetupTaskStatusEntity setupTaskStatusEntity = setupTaskStatusRepo.findById(100L).get();
+        setupTaskStatusEntity.setTaskStatusName("Update Task Status");
+        SetupTaskStatusEntity setupTaskStatusEntityUpdated = setupTaskStatusRepo.save(setupTaskStatusEntity);
+        Assertions.assertThat(setupTaskStatusEntityUpdated.getTaskStatusName()).isEqualTo("Update Task Status");
+    }
+
+    //Delete Task Status By Id
+    @Test
+    @Order(18)
+    @Rollback(value = false)
+    public void deleteTaskStatusById() {
+        SetupTaskStatusEntity setupTaskStatusEntity = setupTaskStatusRepo.findById(100L).get();
+        setupTaskStatusRepo.deleteById(100L);
+        SetupTaskStatusEntity setupTaskStatusEntity1 = null;
+        Optional<SetupTaskStatusEntity> optionalSetupTaskStatusEntity1 = setupTaskStatusRepo.findById(100L);
+        if (optionalSetupTaskStatusEntity1.isPresent()) {
+            setupTaskStatusEntity1 = optionalSetupTaskStatusEntity1.get();
+        }
+        Assertions.assertThat(setupTaskStatusEntity1).isNull();
+    }
+
+    ////=====Setup Task Priority====////
+    @Autowired
+    private SetupPriorityRepo setupPriorityRepo;
+
+    // Add New Task Priority
+    @Test
+    @Order(19)
+    @Rollback(value = false)
+    void addTaskPriority() {
+        SetupPriorityEntity setupPriorityEntity = SetupPriorityEntity.builder()
+                .priorityName("Priority Test")
+                .build();
+        setupPriorityRepo.save(setupPriorityEntity);
+        Assertions.assertThat(setupPriorityEntity.getPriorityId()).isGreaterThan(0);
+    }
+
+
+    //Find all Task Priority
+    @Test
+    @Order(20)
+    public void getTaskPriorityList() {
+        List<SetupPriorityEntity> setupPriorityEntity = setupPriorityRepo.findAll();
+        Assertions.assertThat(setupPriorityEntity.size()).isGreaterThan(0);
+    }
+
+    //Update Task Priority by Id
+    @Test
+    @Order(21)
+    @Rollback(value = false)
+    public void updatePriorityById() {
+        SetupPriorityEntity setupPriorityEntity = setupPriorityRepo.findById(101L).get();
+        setupPriorityEntity.setPriorityName("Update Task Status");
+        SetupPriorityEntity setupPriorityEntityUpdated = setupPriorityRepo.save(setupPriorityEntity);
+        Assertions.assertThat(setupPriorityEntityUpdated.getPriorityName()).isEqualTo("Update Task Status");
+    }
+
+    //Delete Task Status By Id
+    @Test
+    @Order(22)
+    @Rollback(value = false)
+    public void deletePriorityById() {
+        SetupPriorityEntity setupPriorityEntity = setupPriorityRepo.findById(101L).get();
+        setupPriorityRepo.deleteById(101L);
+        SetupPriorityEntity setupPriorityEntity1 = null;
+        Optional<SetupPriorityEntity> optionalSetupPriorityEntity1 = setupPriorityRepo.findById(101L);
+        if (optionalSetupPriorityEntity1.isPresent()) {
+            setupPriorityEntity1 = optionalSetupPriorityEntity1.get();
+        }
+        Assertions.assertThat(setupPriorityEntity1).isNull();
+    }
 
 
 }
