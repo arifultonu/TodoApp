@@ -1,5 +1,6 @@
 package com.smefinance.todoapp.operation.comments.controller;
 
+import com.smefinance.todoapp.ResourceNotFoundException;
 import com.smefinance.todoapp.common.model.DBData;
 import com.smefinance.todoapp.common.model.MessageResponse;
 import com.smefinance.todoapp.operation.comments.entity.CommentsEntity;
@@ -29,9 +30,11 @@ public class CommentsController {
     //Done- param-taskId
     //Get All Task By Task Id
     @GetMapping("/getAllCommentsByTaskId/{taskId}")
-    public List<CommentsEntity> findAllCommentsByTaskId(@PathVariable String taskId) {
+    public List<CommentsEntity> findAllCommentsByTaskId(@PathVariable String taskId) throws ResourceNotFoundException {
         return commentsService.getCommentsByTaskId(taskId);
     }
+
+
 
     //Done - param -id/serial- 20
     //Delete Comment By Task ID

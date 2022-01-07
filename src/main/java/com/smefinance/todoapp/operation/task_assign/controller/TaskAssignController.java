@@ -22,13 +22,6 @@ public class TaskAssignController {
 
     //Done - param- {"":""}
     //Save a Task
-//    @PostMapping("/addTaskAssign2")
-//    public TaskAssignEntity addTaskAssign2(@RequestBody TaskAssignEntity taskAssignEntity) {
-//        return taskAssignService.saveTaskAssign2(taskAssignEntity);
-//    }
-
-    //Done - param- {"":""}
-    //Save a Task
     @PostMapping("/addTaskAssign")
     public MessageResponse addTaskAssign(@RequestBody TaskAssignEntity taskAssignEntity) {
         log.info("taskAssignEntity: "+taskAssignEntity);
@@ -63,6 +56,13 @@ public class TaskAssignController {
     public  List<TaskAssignEntity> findAllTaskAssignByAdminUserId(@PathVariable String adminUserId) {
         return taskAssignService.getTaskAssignByAdminUserId(adminUserId);
     }
+
+    //Done - param- {"":""}
+    //Save a Task
+//    @PostMapping("/addTaskAssign2")
+//    public TaskAssignEntity addTaskAssign2(@RequestBody TaskAssignEntity taskAssignEntity) {
+//        return taskAssignService.saveTaskAssign2(taskAssignEntity);
+//    }
 
     //Done- param-AssignUserId
     //Get All Task By Assign User Id

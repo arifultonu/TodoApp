@@ -33,7 +33,11 @@ docker image build -t todoapp .
 
 #########End###############
 
-
+###Another Process###
+## CMD Command: 
+-- docker-compose down
+-- mvn clean install -DskipTests=true 
+-- docker-compose up
 
 
 

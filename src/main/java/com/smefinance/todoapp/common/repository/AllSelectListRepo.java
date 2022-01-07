@@ -12,7 +12,7 @@ import java.util.List;
 public interface AllSelectListRepo extends JpaRepository<UsersEntity, BigInteger> {
     @Query(
             nativeQuery = true,
-            value = "SELECT `id`, `name` FROM users "
+            value = "SELECT `id`, `name` FROM user_info "
     )
     List<Object[]> getAllUserDataListRepo();
 
