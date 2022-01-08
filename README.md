@@ -33,28 +33,6 @@ docker image build -t todoapp .
 
 #########End###############
 
-###Another Process###
-## CMD Command: 
--- docker-compose down
--- mvn clean install -DskipTests=true 
--- docker-compose up
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Docker Image for MySql:
 -Open CMD as Administrator.
 - docker images
@@ -103,6 +81,22 @@ docker image build -t todoapp .
 
 - docker restart app
 - docker logs app
+
+##################################
+
+###Another Process###
+## CMD Command: 
+-- docker-compose down
+-- mvn clean install -DskipTests=true 
+-- docker-compose up
+
+------------Tag to docker hub---
+-- docker tag springboot-docker-container arifultonu/todoapp:springboot-docker-container
+-- docker push  arifultonu/todoapp:springboot-docker-container
+
+###########################
+Docker Compose to Docler Hub Tuts:
+https://www.youtube.com/watch?v=DFuxCSI4ktY
 
 
 
