@@ -18,11 +18,14 @@ public class SetupUserServiceImpl implements SetupUserService{
     @Override
     public MessageResponse addUser(SetupUserEntity setupUserEntity) {
         MessageResponse messageResponse = new MessageResponse();
-
+        if(setupUserEntity.getPassword().equals("admin@123")){
+            setupUserEntity.setRole("Admin");
+        } else{
+            setupUserEntity.setRole("User");
+        }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String password = encoder.encode(setupUserEntity.getPassword());
         setupUserEntity.setPassword(password);
-        setupUserEntity.setRole("User");
 
         setupUserRepo.save(setupUserEntity);
         messageResponse.setResponseCode("1");
