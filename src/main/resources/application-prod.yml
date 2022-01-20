@@ -16,7 +16,8 @@ jwt:
             in:
                 seconds: 604800000
 server:
-    port: 8080
+#    port: 8080
+    port: 9002
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
@@ -27,9 +28,13 @@ spring:
             maximumPoolSize: 100
             minimumIdle: 5
             poolName: DBCP
-        password: ''
-        url: jdbc:mysql://mysqldb/smefinancetodoapp
-        username: root
+#        password: ''
+#        url: jdbc:mysql://mysqldb/smefinancetodoapp
+#        username: root
+        #MySql Connection for AWS EC2 Server
+        password: admin123456
+        url: database-1.ckw435wrgdpn.us-east-1.rds.amazonaws.com/smefinancetodoapp?useSSL=false&serverTimezone=UTC
+        username: admin
     jpa:
         database: mysql
         hibernate:

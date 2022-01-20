@@ -28,7 +28,7 @@ spring:
             minimumIdle: 5
             poolName: DBCP
         password: ''
-        url: jdbc:mysql://localhost:3306/smefinancetodoapp?useSSL=false&serverTimezone=UTC
+        url: jdbc:mysql://localhost:3306/smefinancetodoapp
         username: root
     jpa:
         database: mysql
@@ -39,3 +39,5 @@ spring:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL5Dialect
         show-sql: true
+
+##Comments -- Added for test CI/CD
