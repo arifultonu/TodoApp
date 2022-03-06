@@ -33,7 +33,7 @@ spring:
 #        username: root
         #MySql Connection for AWS EC2 Server
         password: admin123456
-        url: database-1.ckw435wrgdpn.us-east-1.rds.amazonaws.com/smefinancetodoapp?useSSL=false&serverTimezone=UTC
+        url: jdbc:mysql://database-1.ckw435wrgdpn.us-east-1.rds.amazonaws.com/smefinancetodoapp?useSSL=false&serverTimezone=UTC
         username: admin
     jpa:
         database: mysql
