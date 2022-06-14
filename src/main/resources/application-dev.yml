@@ -27,7 +27,7 @@ spring:
             maximumPoolSize: 100
             minimumIdle: 5
             poolName: DBCP
-        password: ''
+        password: Walton#db
         url: jdbc:mysql://localhost:3306/smefinancetodoapp
         username: root
     jpa:
